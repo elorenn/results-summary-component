@@ -38,7 +38,7 @@
   --white: hsl(0, 0%, 100%);
   --pale-blue: hsl(221, 100%, 96%);
   --light-lavender: hsl(241, 100%, 89%);
-  --dark-gray-blue: hsl(224, 30%, 27%);
+  --dark-gray-blue: 224 30% 27%;
 
   --font: "Hanken Grotesk", sans-serif;
 }
@@ -65,7 +65,7 @@ body {
 h1,
 p,
 .score {
-  color: hsla(0, 0%, 100%, 0.5);
+  color: var(--light-lavender);
 }
 
 .score span,
@@ -73,8 +73,17 @@ h2 {
   color: var(--white);
 }
 
+h2 {
+  font-size: 1.3rem;
+}
+
 h3 {
-  color: var(--dark-gray-blue);
+  color: hsl(var(--dark-gray-blue) / 1);
+}
+
+h4,
+p {
+  font-size: 16px;
 }
 
 .score span {
@@ -109,6 +118,12 @@ main {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  min-width: 300px;
+}
+
+main section {
+  padding: 30px;
+  justify-content: space-between;
 }
 
 .result {
@@ -122,9 +137,9 @@ main {
   border-radius: 0px 0px 25px 25px;
   width: 100%;
   height: 44%;
+  min-height: 380px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
   text-align: center;
 }
@@ -133,12 +148,11 @@ main {
   background-color: var(--white);
   width: 100%;
   height: 56%;
-  padding: 0 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: start;
   text-align: start;
+  overflow: scroll;
 }
 
 .summary ul {
@@ -153,10 +167,15 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 16px;
 }
 
 .summary p {
-  color: var(--dark-gray-blue);
+  color: hsl(var(--dark-gray-blue) / 0.5);
+}
+
+.summary p span {
+  color: hsl(var(--dark-gray-blue) / 1);
 }
 
 #reaction {
@@ -192,16 +211,18 @@ main {
 }
 
 h4 > img {
+  padding-right: 16px;
   vertical-align: bottom;
 }
 
 button {
   width: 100%;
   height: 60px;
+  min-height: 60px;
   border: none;
   border-radius: 50px;
-  color: var(--white);
-  background-color: var(--dark-gray-blue);
+  color: var(--pale-blue);
+  background-color: hsl(var(--dark-gray-blue) / 1);
   cursor: pointer;
 }
 
@@ -232,7 +253,7 @@ footer {
   margin: auto;
   font-size: 11px;
   text-align: center;
-  color: var(--dark-gray-blue);
+  color: hsl(var(--dark-gray-blue) / 1);
 }
 
 .attribution a {
@@ -244,8 +265,13 @@ footer {
   main {
     flex-direction: row;
     width: 614px;
-    height: 426px;
+    min-width: 614px;
+    height: 450px;
     border-radius: 25px;
+  }
+
+  main section {
+    padding: 40px;
   }
 
   .result,
@@ -253,5 +279,13 @@ footer {
     height: 100%;
     flex-basis: 50%;
     border-radius: 25px;
+  }
+
+  .summary li {
+    height: 56px;
+  }
+
+  button {
+    min-height: 46px;
   }
 }
