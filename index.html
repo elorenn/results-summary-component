@@ -28,40 +28,11 @@
       </section>
       <section class="summary">
         <h3>Summary</h3>
-        <ul>
-          <li id="reaction">
-            <h4>
-              <img
-                src="./assets/images/icon-reaction.svg"
-                alt="lightning icon"
-              />Reaction
-            </h4>
-            <p><span>80</span>  / 100</p>
-          </li>
-          <li id="memory">
-            <h4>
-              <img
-                src="./assets/images/icon-memory.svg"
-                alt="brain icon"
-              />Memory
-            </h4>
-            <p><span>92</span>  / 100</p>
-          </li>
-          <li id="verbal">
-            <h4>
-              <img
-                src="./assets/images/icon-verbal.svg"
-                alt="speech bubble icon"
-              />Verbal
-            </h4>
-            <p><span>61</span>  / 100</p>
-          </li>
-          <li id="visual">
-            <h4>
-              <img src="./assets/images/icon-visual.svg" alt="eye icon" />Visual
-            </h4>
-            <p><span>72</span>  / 100</p>
-          </li>
+        <ul id="js-summary">
+          <li id="reaction"></li>
+          <li id="memory"></li>
+          <li id="verbal"></li>
+          <li id="visual"></li>
         </ul>
         <button type="button">Continue</button>
       </section>
@@ -73,5 +44,20 @@
       >. Coded by
       <a href="https://github.com/elorenn/results-summary-component">Lo</a>.
     </footer>
+
+    <script>
+      fetch("./data.json")
+        .then((response) => response.json())
+        .then((data) => {
+          data.forEach((item) => {
+            document.getElementById(item.category.toLowerCase()).innerHTML = `
+                <h4>
+                  <img src=${item.icon} alt="${item.category} icon" />${item.category}
+                </h4>
+                <p><span>${item.score}</span> / 100</p>
+            `;
+          });
+        });
+    </script>
   </body>
 </html>
